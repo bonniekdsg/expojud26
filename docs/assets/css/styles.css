@@ -48,13 +48,13 @@ input { caret-color: #fff; }
 .btn-dynamic { display: inline-flex; align-items: center; justify-content: center; gap: 22px; min-height: 52px; border-radius: 100px; padding: 0 25px; font-size: 14px; font-weight: 500; color: #fff; transition: background-color 200ms ease, transform 200ms ease; }
 .btn-dynamic svg { width: 18px; height: 18px; }
 .btn-dynamic:active, .icon-button:active { transform: scale(.96); }
-.carousel-panel { min-width: 0; width: 100%; max-width: 680px; justify-self: end; border-radius: 32px; overflow: hidden; }
-.carousel-heading { display: flex; align-items: center; justify-content: space-between; padding: 24px 28px 8px; gap: 16px; }
+.carousel-panel { min-width: 0; width: 100%; max-width: 520px; justify-self: end; }
+.carousel-heading { display: flex; align-items: center; justify-content: space-between; padding: 0 12px 4px; gap: 16px; text-shadow: 0 2px 8px rgba(0, 0, 0, .8); }
 .carousel-heading h2 { font-size: 13px; font-weight: 500; margin: 0; color: #f1f2f3; }
 .slide-count { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
-.card-container { display: flex; gap: 14px; align-items: center; overflow-x: auto; width: 100%; padding: 22px 24px; scroll-padding-inline: 24px; scrollbar-width: none; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
+.card-container { display: flex; gap: 14px; align-items: center; overflow-x: auto; width: 100%; padding: 16px 12px; scroll-padding-inline: 24px; scrollbar-width: none; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
 .card-container::-webkit-scrollbar { display: none; }
-.image-card { position: relative; width: 184px; height: 250px; flex: 0 0 184px; padding: 0; border: 0; border-radius: 18px; overflow: hidden; text-align: left; color: white; background: #263236; opacity: .62; transform: scale(.92); transition: transform 450ms var(--ease), opacity 450ms ease, box-shadow 450ms ease; }
+.image-card { position: relative; width: 148px; height: 204px; flex: 0 0 148px; padding: 0; border: 0; border-radius: 18px; overflow: hidden; text-align: left; color: white; background: #263236; opacity: .62; transform: scale(.92); transition: transform 450ms var(--ease), opacity 450ms ease, box-shadow 450ms ease; }
 .image-card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; border: 1px solid rgba(255, 255, 255, .25); pointer-events: none; }
 .image-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .card-title { position: absolute; bottom: 0; left: 0; right: 0; padding: 48px 16px 17px; background: linear-gradient(transparent, rgba(3, 9, 12, .92)); color: white; font-size: 12px; line-height: 1.45; font-weight: 500; }
@@ -62,7 +62,7 @@ input { caret-color: #fff; }
 .image-card.active::after { border: 2px solid rgba(255, 255, 255, .95); }
 .image-card:hover { opacity: 1; }
 .image-card:focus-visible { outline-offset: 4px; }
-.carousel-toolbar { display: flex; align-items: center; justify-content: center; padding: 0 18px 18px; gap: 6px; }
+.carousel-toolbar { display: flex; align-items: center; justify-content: center; width: fit-content; max-width: 100%; margin: 10px auto 0; padding: 4px 10px; gap: 6px; border-radius: 100px; }
 .icon-button { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 44px; width: 44px; height: 44px; color: #fff; border: 0; background: transparent; border-radius: 50%; transition: background 160ms ease, transform 160ms ease; }
 .icon-button:hover { background: rgba(255, 255, 255, .13); }
 .icon-button svg { width: 20px; height: 20px; }
@@ -92,11 +92,11 @@ input { caret-color: #fff; }
 #mobile-search-open-btn, #hamburger-btn { background: rgba(255,255,255,.08); }
 #hamburger-btn { display: flex; }
 @keyframes content-enter { from { opacity: .4; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-@media (min-width: 1600px) { .image-card { height: 285px; } }
+@media (min-width: 1600px) { .image-card { height: 220px; } }
 @media (max-width: 1100px) {
     .showcase { gap: 36px; padding-inline: 32px; }
     .slide-title { font-size: clamp(2.3rem, 4.7vw, 3.5rem); }
-    .carousel-heading { padding-inline: 20px; }
+    .carousel-heading { padding-inline: 12px; }
     .indicator { width: 20px; }
     .carousel-toolbar { padding-inline: 10px; gap: 1px; }
     .toolbar-divider { margin-inline: 2px; }
@@ -110,11 +110,11 @@ input { caret-color: #fff; }
     .main-content { max-width: 640px; }
     .slide-title { font-size: clamp(2.25rem, 7vw, 3.5rem); max-width: 19ch; }
     .slide-description { max-width: 56ch; font-size: 15px; line-height: 1.65; margin-bottom: 24px; }
-    .carousel-panel { max-width: none; border-radius: 26px; }
-    .image-card { width: 150px; flex-basis: 150px; height: 185px; }
-    .card-container { padding: 16px 20px; }
-    .carousel-toolbar { padding-bottom: 10px; }
-    .carousel-heading { padding-top: 18px; }
+    .carousel-panel { max-width: none; }
+    .image-card { width: 140px; flex-basis: 140px; height: 175px; }
+    .card-container { padding: 16px 12px; }
+    .carousel-toolbar { padding: 4px 10px; }
+    .carousel-heading { padding-top: 0; }
     .indicator { width: 26px; }
     .overlay-dark { background: linear-gradient(90deg, rgba(5,12,15,.83), rgba(5,12,15,.4)), linear-gradient(0deg, rgba(5,12,15,.65), transparent); }
 }
@@ -128,12 +128,12 @@ input { caret-color: #fff; }
     .slide-category { margin-bottom: 12px; font-size: 11px; }
     .slide-description { font-size: 14px; margin-bottom: 20px; }
     .btn-dynamic { min-height: 48px; font-size: 13px; }
-    .carousel-heading { padding: 16px 18px 0; }
+    .carousel-heading { padding: 0 6px; }
     .carousel-heading h2 { font-size: 12px; }
-    .image-card { width: 138px; flex-basis: 138px; height: 165px; border-radius: 14px; }
-    .card-container { padding: 16px 18px; gap: 10px; }
+    .image-card { width: 120px; flex-basis: 120px; height: 148px; border-radius: 14px; }
+    .card-container { padding: 14px 6px; gap: 10px; }
     .card-title { font-size: 10px; padding: 36px 12px 12px; }
-    .carousel-toolbar { padding: 0 6px 8px; gap: 0; }
+    .carousel-toolbar { padding: 4px 6px; gap: 0; }
     .indicator { width: 24px; }
     .toolbar-divider { margin: 0; }
     .site-footer { padding: 12px 24px max(18px, env(safe-area-inset-bottom)); font-size: 9px; }
