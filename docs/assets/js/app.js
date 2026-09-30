@@ -19,20 +19,22 @@ const playIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true
 
 function syncPlayback() {
     clearInterval(autoSlideInterval);
-    const paused = userPaused || pauseReasons.size > 0 || displayedSlides.length === 0;
-    if (!paused && displayedSlides.length > 1) autoSlideInterval = setInterval(() => goToSlide(currentSlide + 1), 8000);
+    autoSlideInterval = undefined;
+    const carouselPaused = userPaused || pauseReasons.size > 0 || displayedSlides.length === 0;
+    if (!carouselPaused && displayedSlides.length > 1) autoSlideInterval = setInterval(() => goToSlide(currentSlide + 1), 8000);
     backgrounds.forEach((background) => {
         const video = background.querySelector('video');
         if (!video) return;
-        if (paused || background !== activeBg) video.pause();
-        else video.play().catch(() => { /* The poster remains available if autoplay is blocked. */ });
+        if (document.hidden || displayedSlides.length === 0 || background !== activeBg) video.pause();
+        else video.play().catch(() => { /* The backdrop remains available if autoplay is blocked. */ });
     });
     $('playback-toggle').innerHTML = userPaused ? playIcon : pauseIcon;
-    $('playback-toggle').setAttribute('aria-label', userPaused ? 'Retomar apresentação' : 'Pausar apresentação');
+    $('playback-toggle').setAttribute('aria-label', userPaused ? 'Retomar carrossel' : 'Pausar carrossel');
     $('playback-toggle').setAttribute('aria-pressed', String(userPaused));
 }
 
 function setPauseReason(reason, enabled) {
+    if (pauseReasons.has(reason) === enabled) return;
     if (enabled) pauseReasons.add(reason);
     else pauseReasons.delete(reason);
     syncPlayback();
@@ -117,6 +119,12 @@ function renderNavigation() {
         title.textContent = slide.title;
         card.append(image, title);
         card.addEventListener('click', () => goToSlide(index));
+        card.addEventListener('pointerenter', (event) => {
+            if (event.pointerType === 'mouse' && card.classList.contains('active')) setPauseReason('active-card-hover', true);
+        });
+        card.addEventListener('pointerleave', (event) => {
+            if (event.pointerType === 'mouse') setPauseReason('active-card-hover', false);
+        });
         $('image-carousel').append(card);
     });
 }
@@ -151,6 +159,8 @@ function updateSlide() {
         card.classList.toggle('active', index === currentSlide);
         card.setAttribute('aria-current', String(index === currentSlide));
     });
+    if (window.matchMedia('(hover: hover)').matches && cards[currentSlide].matches(':hover')) pauseReasons.add('active-card-hover');
+    else pauseReasons.delete('active-card-hover');
     [...$('indicators').children].forEach((indicator, index) => {
         indicator.classList.toggle('active', index === currentSlide);
         indicator.setAttribute('aria-current', String(index === currentSlide));
@@ -263,7 +273,6 @@ $('previous-slide').addEventListener('click', () => goToSlide(currentSlide - 1))
 $('next-slide').addEventListener('click', () => goToSlide(currentSlide + 1));
 $('playback-toggle').addEventListener('click', () => {
     userPaused = !userPaused;
-    if (!userPaused) { pauseReasons.delete('focus'); pauseReasons.delete('hover'); }
     syncPlayback();
 });
 $('search-input').addEventListener('input', (event) => performSearch(event.target.value));
@@ -324,13 +333,6 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-const showcase = document.querySelector('.showcase');
-showcase.addEventListener('pointerenter', (event) => { if (event.pointerType === 'mouse') setPauseReason('hover', true); });
-showcase.addEventListener('pointerleave', () => setPauseReason('hover', false));
-showcase.addEventListener('focusin', () => setPauseReason('focus', true));
-showcase.addEventListener('focusout', (event) => { if (!showcase.contains(event.relatedTarget)) setPauseReason('focus', false); });
-$('image-carousel').addEventListener('touchstart', () => setPauseReason('touch', true), { passive: true });
-['touchend', 'touchcancel'].forEach((name) => $('image-carousel').addEventListener(name, () => setPauseReason('touch', false), { passive: true }));
 document.addEventListener('visibilitychange', () => setPauseReason('hidden', document.hidden));
 window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
     if (event.matches && openOverlay?.id.startsWith('mobile-')) closeOverlay();
