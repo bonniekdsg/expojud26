@@ -5,56 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MPAC na ExpoJud 2026 | Amazônia: território de inovação</title>
     <meta name="description" content="Conheça as iniciativas do Ministério Público do Estado do Acre apresentadas na ExpoJud 2026.">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8CJDE0TBW"></script>
 
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="font-sans bg-black overflow-hidden">
+<body class="font-sans bg-black">
     <!-- Fundo Principal com Slide -->
     <div id="background-a" class="slide-bg fixed inset-0 z-0"></div>
     <div id="background-b" class="slide-bg fixed inset-0 z-0" style="opacity: 0;"></div>
     <div class="overlay-dark fixed inset-0 z-10"></div>
     <div class="fixed bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
-    
+
     <!-- Header -->
-    <header class="relative z-30 flex justify-between items-center p-6 lg:p-8">
+    <header class="site-header relative z-30 flex justify-between items-center">
         <div class="flex items-center gap-4 flex-shrink-0">
-            <img src="assets/logo_expojud26.png" alt="Logo ExpoJud 2026" class="h-8 lg:h-12">
+            <img src="assets/logo_expojud26.png" alt="Logo ExpoJud 2026" class="brand-logo">
         </div>
 
         <!-- Desktop Search Bar -->
         <div class="hidden md:flex flex-grow justify-center px-8">
-            <div class="relative w-full max-w-md">
-                <input type="text" id="search-input" placeholder="Buscar por título ou categoria..." class="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-white/60 px-6 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white/50 transition-all">
-                <button id="search-btn" class="absolute top-1/2 right-4 -translate-y-1/2 text-white/60 hover:text-white transition">
+            <div class="search-shell glass relative w-full max-w-md">
+                <input type="text" id="search-input" aria-label="Buscar iniciativas por título ou categoria" placeholder="Buscar iniciativas" class="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-white/60 px-6 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white/50 transition-all">
+                <button id="search-btn" aria-label="Buscar" class="absolute top-1/2 right-4 -translate-y-1/2 text-white/60 hover:text-white transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </button>
             </div>
         </div>
-        
+
         <div class="flex items-center space-x-2">
         <nav class="hidden md:flex space-x-4 flex-shrink-0">
-            <a href="#" id="contact-btn" class="relative group overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full font-medium">
-                <span class="absolute inset-0 bg-red-700 rounded-full scale-0 group-hover:scale-150 transition-transform duration-700 ease-out"></span>
+            <a href="#" id="contact-btn" aria-haspopup="dialog" class="relative group overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full font-medium">
+
                 <span class="relative z-10">Contato</span>
             </a>
         </nav>
-    
+
             <!-- Mobile Search Icon -->
-            <button id="mobile-search-open-btn" class="md:hidden text-white p-2 z-50">
+            <button id="mobile-search-open-btn" aria-label="Abrir busca" class="md:hidden text-white p-2 z-50">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </button>
-    
+
             <!-- Hamburger Button -->
             <div class="md:hidden flex items-center">
-                <button id="hamburger-btn" class="text-white focus:outline-none z-50">
+                <button id="hamburger-btn" aria-label="Abrir menu" class="text-white focus:outline-none z-50">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -62,14 +62,14 @@
     </header>
 
     <!-- Mobile Search Overlay -->
-    <div id="mobile-search-overlay" class="hidden fixed inset-0 bg-black/95 z-50 p-4 pt-6 flex flex-col items-center transition-opacity duration-300 ease-in-out">
-        <button id="mobile-search-close-btn" class="absolute top-6 right-6 text-white">
+    <div id="mobile-search-overlay" role="dialog" aria-modal="true" aria-label="Buscar iniciativas" class="hidden fixed inset-0 bg-black/95 z-50 p-4 pt-6 flex flex-col items-center transition-opacity duration-300 ease-in-out">
+        <button id="mobile-search-close-btn" aria-label="Fechar busca" class="absolute top-6 right-6 text-white">
             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         <div class="w-full max-w-md mt-16">
             <div class="relative">
-                <input type="text" id="mobile-search-input" placeholder="Buscar por título ou categoria..." class="w-full bg-white/10 border border-white/20 text-white px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-white/50">
-                <button id="mobile-search-execute-btn" class="absolute top-1/2 right-4 -translate-y-1/2 text-white/60">
+                <input type="text" id="mobile-search-input" aria-label="Buscar iniciativas por título ou categoria" placeholder="Buscar iniciativas" class="w-full bg-white/10 border border-white/20 text-white px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-white/50">
+                <button id="mobile-search-execute-btn" aria-label="Buscar" class="absolute top-1/2 right-4 -translate-y-1/2 text-white/60">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
@@ -77,10 +77,10 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Mobile Menu Modal -->
     <div id="mobile-menu-overlay" class="modal-overlay md:hidden">
-        <div id="mobile-menu-content" class="modal-content max-w-sm" role="dialog" aria-modal="true">
+        <div id="mobile-menu-content" class="modal-content max-w-sm" role="dialog" aria-modal="true" aria-label="Menu">
             <div class="text-white">
                 <h2 class="text-2xl font-serif font-bold mb-8 text-center">Menu</h2>
 
@@ -210,47 +210,36 @@
         </div>
         <button id="mobile-menu-close" class="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-2xl" aria-label="Fechar menu">&times;</button>
     </div>
-    
-    <!-- Conteúdo Principal -->
-    <div class="relative z-20 min-h-screen flex items-center pb-24 md:pb-0">
-        <div class="container mx-auto px-6 lg:px-16">
-            <div class="flex flex-col lg:flex-row items-center justify-between">
-                <!-- Área de Conteúdo (Esquerda) -->
-                <div class="lg:w-1/2 mb-8 lg:mb-0">
-                    <div class="main-content">
-                        <div id="content-container">
-                            <!-- Conteúdo será inserido dinamicamente -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Carrossel de Cartões (Direita) e Indicadores -->
-                <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-end mt-8 lg:mt-0 mb-8 md:mb-0">
-                    <div class="card-container" id="image-carousel">
-                        <!-- Cartões serão inseridos dinamicamente -->
-                    </div>
-                    <!-- Indicadores -->
-                    <div class="flex justify-center w-full mt-6 mb-6 md:mb-0">
-                        <div id="indicators" class="flex space-x-3">
-                            <!-- Indicadores serão inseridos dinamicamente -->
-                        </div>
-                    </div>
 
-                </div>
+    <!-- O vídeo continua sendo o cenário; o vidro reúne os controles. -->
+    <main class="showcase relative z-20" aria-label="Iniciativas do MPAC">
+        <section class="main-content" aria-label="Iniciativa em destaque">
+            <div id="content-container"></div>
+        </section>
+        <section class="carousel-panel glass" aria-label="Carrossel de iniciativas" aria-roledescription="carrossel">
+            <div class="carousel-heading">
+                <h2>Explore as iniciativas</h2>
+                <span id="slide-count" class="slide-count"></span>
             </div>
-        </div>
-    </div>
-
-    <!-- Informações de Contato -->
-    <div class="text-center py-8">
-        <p class="text-white text-sm md:text-base">
-            Rua Marechal Deodoro, 472 – Ipase – CEP: 69.900-333 | Telefone: (68) 3212-2000
-        </p>
-    </div>
+            <div class="card-container" id="image-carousel"></div>
+            <div class="carousel-toolbar">
+                <button id="previous-slide" class="icon-button" aria-label="Iniciativa anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div id="indicators" aria-label="Escolher iniciativa"></div>
+                <button id="next-slide" class="icon-button" aria-label="Próxima iniciativa">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <span class="toolbar-divider" aria-hidden="true"></span>
+                <button id="playback-toggle" class="icon-button" aria-label="Pausar apresentação" aria-pressed="false"></button>
+            </div>
+        </section>
+        <p id="search-status" class="sr-only" role="status"></p>
+    </main>
 
     <!-- Modal de Detalhes -->
     <div id="modal-overlay" class="modal-overlay">
-        <div id="modal-content" class="modal-content" role="dialog" aria-modal="true">
+        <div id="modal-content" class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
             <div class="grid grid-cols-1 gap-4 md:gap-8 text-white">
                 <div>
                     <p id="modal-category" class="text-xs md:text-sm uppercase tracking-wider text-white/70 mb-2"></p>
@@ -266,7 +255,7 @@
 
     <!-- Modal de Contato -->
     <div id="contact-modal-overlay" class="modal-overlay">
-        <div id="contact-modal-content" class="modal-content" role="dialog" aria-modal="true">
+        <div id="contact-modal-content" class="modal-content" role="dialog" aria-modal="true" aria-label="Contatos MPAC">
             <div class="text-white">
                 <h2 class="text-2xl md:text-4xl font-serif font-bold mb-6 text-center">Contatos MPAC</h2>
 
@@ -345,7 +334,7 @@
                             </div>
                             <span class="text-sm md:text-base">CAV</span>
                         </a>
-                    
+
                         <a href="https://nat.mpac.mp.br/observatorio-de-analise-criminal/" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10 hover:border-white/20">
                             <div class="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
                                 <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -409,17 +398,10 @@
         <button id="contact-modal-close" class="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-2xl" aria-label="Fechar modal">&times;</button>
     </div>
 
-    <!-- Rodapé com informações de contato -->
-    <div class="fixed bottom-0 left-0 w-full z-30 bg-black/40 backdrop-blur-sm border-t border-white/20 py-4">
-        <div class="container mx-auto px-6">
-            <p class="text-center text-white text-xs md:text-sm font-medium">
-                Rua Marechal Deodoro, 472 – Ipase – CEP: 69.900-333 | Telefone: (68) 3212-2000, Rio Branco, Acre
-            </p>
-        </div>
-    </div>
-
-
-
+    <footer class="site-footer relative z-20">
+        <p>Ministério Público do Estado do Acre</p>
+        <p>Rua Marechal Deodoro, 472 · Ipase · Rio Branco, Acre · CEP 69.900-333 <span class="footer-separator">|</span> <a href="tel:+556832122000">(68) 3212-2000</a></p>
+    </footer>
 
     <script src="assets/js/analytics.js"></script>
     <script src="assets/js/slides-data.js"></script>
