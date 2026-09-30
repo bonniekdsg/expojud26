@@ -3,6 +3,8 @@ let displayedSlides = [...slides];
 let currentSlide = 0;
 let autoSlideInterval;
 let activeBg;
+let primedVideo = null;
+let primedSource = '';
 let openOverlay = null;
 let returnFocus = null;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -36,27 +38,57 @@ function setPauseReason(reason, enabled) {
     syncPlayback();
 }
 
+function canLoadVideo() {
+    const connection = navigator.connection;
+    return !reducedMotion.matches && !connection?.saveData && !['slow-2g', '2g'].includes(connection?.effectiveType);
+}
+
+function createVideo(source) {
+    const video = document.createElement('video');
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+    video.src = source;
+    video.setAttribute('aria-hidden', 'true');
+    video.addEventListener('loadeddata', () => {
+        video.classList.add('is-ready');
+        if (activeBg?.contains(video)) primeUpcomingVideo();
+    });
+    video.load();
+    return video;
+}
+
+function primeUpcomingVideo() {
+    if (!canLoadVideo() || displayedSlides.length < 2) return;
+    const upcoming = displayedSlides[(currentSlide + 1) % displayedSlides.length];
+    if (upcoming.background.type !== 'video' || primedSource === upcoming.background.src) return;
+    if (primedVideo) {
+        primedVideo.removeAttribute('src');
+        primedVideo.load();
+    }
+    primedSource = upcoming.background.src;
+    primedVideo = createVideo(primedSource);
+}
+
 function setSlideBackground(slide) {
     const next = activeBg === backgrounds[0] ? backgrounds[1] : backgrounds[0];
     next.replaceChildren();
-    next.style.backgroundImage = `url('${slide.cardImages[0]}')`;
-    const saveData = navigator.connection?.saveData || ['slow-2g', '2g'].includes(navigator.connection?.effectiveType);
-    if (slide.background.type === 'video' && !saveData && !reducedMotion.matches) {
-        const video = document.createElement('video');
-        video.muted = true;
-        video.loop = true;
-        video.playsInline = true;
-        video.preload = 'metadata';
-        video.poster = slide.cardImages[0];
-        video.src = slide.background.src;
-        video.setAttribute('aria-hidden', 'true');
+    const placeholder = document.createElement('div');
+    placeholder.className = 'slide-placeholder';
+    placeholder.style.backgroundImage = `url('${slide.background.type === 'video' ? slide.cardImages[0] : slide.background.src}')`;
+    next.append(placeholder);
+    if (slide.background.type === 'video' && canLoadVideo()) {
+        const video = primedSource === slide.background.src ? primedVideo : createVideo(slide.background.src);
+        primedVideo = null;
+        primedSource = '';
         next.append(video);
-    } else if (slide.background.type !== 'video') {
-        next.style.backgroundImage = `url('${slide.background.src}')`;
+        if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) video.classList.add('is-ready');
     }
     if (activeBg) activeBg.style.opacity = '0';
     next.style.opacity = '1';
     activeBg = next;
+    if (next.querySelector('video')?.classList.contains('is-ready')) primeUpcomingVideo();
 }
 
 function renderNavigation() {
