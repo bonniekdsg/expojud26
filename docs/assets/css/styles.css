@@ -348,34 +348,3 @@
                 display: none;
             }
         }
-
-        .finalist-tag {
-            background: linear-gradient(145deg, #ffd700, #f0c000);
-            color: #4a2c00;
-            padding: 4px 12px;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: inline-block;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
-            border: 1px solid #fff2a8;
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            from { box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3); }
-            to { box-shadow: 0 4px 16px rgba(255, 215, 0, 0.6); }
-        }
-
-        .active-filter-btn {
-            background: linear-gradient(145deg, #ffd700, #f0c000);
-            border-color: #fff2a8;
-        }
-
-        .active-filter-btn > .relative.z-10 {
-            color: #4a2c00;
-            font-weight: 700;
-        }

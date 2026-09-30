@@ -3,14 +3,12 @@ let originalSlides = [...slides];
         let currentSlide = 0;
         let autoSlideInterval;
         let bgA, bgB, activeBg;
-        let isFinalistFilterActive = false;
 
         function initializeSlider() {
             bgA = document.getElementById('background-a');
             bgB = document.getElementById('background-b');
             const searchInput = document.getElementById('search-input');
             const searchBtn = document.getElementById('search-btn');
-            const finalistsBtn = document.getElementById('finalists-btn');
             
             setSlideBackground(bgA, displayedSlides[0].background);
             activeBg = bgA;
@@ -19,11 +17,6 @@ let originalSlides = [...slides];
             renderImageCards();
             updateSlide(true); // Marca como inicialização
             startAutoSlide();
-
-            finalistsBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleFinalistFilter();
-            });
 
             const desktopSearch = () => {
                 performSearchLogic(searchInput.value.toLowerCase().trim(), searchInput.value);
@@ -92,17 +85,9 @@ let originalSlides = [...slides];
             
             // Atualizar conteúdo
             const contentContainer = document.getElementById('content-container');
-            const isFinalist = displayedSlides.length > 0 && displayedSlides[currentSlide].isFinalist;
             const slide = displayedSlides[currentSlide];
             const contentSlide = document.createElement('div');
             contentSlide.className = 'content-slide';
-
-            if (isFinalist) {
-                const finalistTag = document.createElement('div');
-                finalistTag.className = 'finalist-tag';
-                finalistTag.textContent = '⭐ Finalista Prêmio J.Ex';
-                contentSlide.appendChild(finalistTag);
-            }
 
             const category = document.createElement('p');
             category.className = 'text-sm font-medium tracking-wider mb-3 uppercase';
@@ -281,12 +266,6 @@ let originalSlides = [...slides];
 
         function performSearchLogic(searchTerm, rawQuery) {
             clearInterval(autoSlideInterval);
-
-            // Qualquer busca desativa o filtro de finalistas
-            if (isFinalistFilterActive) {
-                isFinalistFilterActive = false;
-                document.getElementById('finalists-btn').classList.remove('active-filter-btn');
-            }
 
             if (searchTerm === '') {
                 displayedSlides = [...originalSlides];
@@ -615,41 +594,3 @@ let originalSlides = [...slides];
                 }
             }, 100);
         });
-
-        function toggleFinalistFilter() {
-            isFinalistFilterActive = !isFinalistFilterActive;
-            const finalistsBtn = document.getElementById('finalists-btn');
-            const searchInput = document.getElementById('search-input');
-            const mobileSearchInput = document.getElementById('mobile-search-input');
-            
-            searchInput.value = '';
-            mobileSearchInput.value = '';
-
-            if (isFinalistFilterActive) {
-                displayedSlides = originalSlides.filter(slide => slide.isFinalist);
-                finalistsBtn.classList.add('active-filter-btn');
-            } else {
-                displayedSlides = [...originalSlides];
-                finalistsBtn.classList.remove('active-filter-btn');
-            }
-
-            currentSlide = 0;
-
-            if (displayedSlides.length === 0 && isFinalistFilterActive) {
-                const contentContainer = document.getElementById('content-container');
-                contentContainer.innerHTML = `
-                    <div class="content-slide active">
-                        <h1 class="slide-title font-serif font-bold text-white">Nenhum Finalista</h1>
-                        <p class="slide-description text-white">Ainda não há finalistas marcados para o Prêmio J.Ex.</p>
-                    </div>
-                `;
-                document.getElementById('image-carousel').innerHTML = '';
-                document.getElementById('indicators').innerHTML = '';
-                clearInterval(autoSlideInterval);
-            } else {
-                renderIndicators();
-                renderImageCards();
-                updateSlide();
-                restartAutoSlide();
-            }
-        }
