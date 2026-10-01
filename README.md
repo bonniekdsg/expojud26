@@ -2,19 +2,20 @@
 
 Página estática publicada pelo GitHub Pages a partir da pasta `docs/` da branch `main`.
 
-Endereço padrão do GitHub Pages: https://bonniekdsg.github.io/expojud26/
+Prévia para a equipe: https://bonniekdsg.github.io/expojud26/
 
 ## Domínio definitivo
 
-O domínio principal é `expojud2026.mpac.mp.br`; `www.expojud2026.mpac.mp.br` deve redirecionar para ele. A pasta publicada contém `docs/CNAME` apenas com o domínio principal, como exige o GitHub Pages.
+O domínio planejado é `expojud2026.mpac.mp.br`, com redirecionamento de `www.expojud2026.mpac.mp.br`. Enquanto a equipe avalia a prévia, o repositório não contém `docs/CNAME` e o campo **Custom domain** em **Settings → Pages** fica vazio. Assim, o endereço de prévia continua acessível.
 
-Para a equipe responsável pelo DNS do MPAC:
+Após a aprovação, para configurar o domínio definitivo:
 
-1. Crie um registro DNS `CNAME` para `expojud2026.mpac.mp.br` apontando diretamente para `bonniekdsg.github.io`.
-2. Crie outro registro DNS `CNAME` para `www.expojud2026.mpac.mp.br` apontando diretamente para `bonniekdsg.github.io`.
-3. Em **Settings → Pages**, confirme que **Custom domain** está como `expojud2026.mpac.mp.br`. Depois que o DNS propagar e o certificado for emitido, habilite **Enforce HTTPS**.
+1. Em **Settings → Pages**, defina **Custom domain** como `expojud2026.mpac.mp.br`. O GitHub criará `docs/CNAME` com esse único nome.
+2. Crie um registro DNS `CNAME` para `expojud2026.mpac.mp.br` apontando diretamente para `bonniekdsg.github.io`.
+3. Crie outro registro DNS `CNAME` para `www.expojud2026.mpac.mp.br` apontando diretamente para `bonniekdsg.github.io`.
+4. Depois que o DNS propagar e o certificado for emitido, habilite **Enforce HTTPS**.
 
-O arquivo `docs/CNAME` configura o domínio no GitHub Pages, mas não cria os registros DNS. Até eles existirem, o domínio personalizado não abrirá; o endereço padrão do GitHub Pages também poderá redirecionar para ele.
+Ao configurar o domínio personalizado antes do DNS, o endereço de prévia poderá redirecionar para um site ainda indisponível. Se o navegador continuar redirecionando após a remoção do domínio, teste em uma janela anônima ou com um parâmetro novo, como `?preview=1`, para evitar um redirecionamento antigo em cache.
 
 ## Versão aprovada
 
