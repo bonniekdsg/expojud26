@@ -241,10 +241,10 @@ function performSearch(query) {
     const normalized = normalizeSearch(query);
     $('search-input').value = query;
     $('mobile-search-input').value = query;
-    displayedSlides = originalSlides.filter((slide) => normalizeSearch(`${slide.title} ${slide.category}`).includes(normalized));
+    displayedSlides = originalSlides.filter((slide) => normalizeSearch(`${slide.title} ${slide.officialTitle || ''} ${slide.category}`).includes(normalized));
     currentSlide = 0;
     renderNavigation();
-    $('search-status').textContent = `${displayedSlides.length} iniciativas encontradas.`;
+    $('search-status').textContent = `${displayedSlides.length} ${displayedSlides.length === 1 ? 'iniciativa encontrada' : 'iniciativas encontradas'}.`;
     ['previous-slide', 'next-slide'].forEach((id) => { $(id).disabled = displayedSlides.length < 2; });
     $('playback-toggle').disabled = displayedSlides.length === 0;
     if (displayedSlides.length) {

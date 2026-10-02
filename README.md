@@ -29,6 +29,6 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory docs
 
 Abra http://127.0.0.1:4173/.
 
-A proposta mantém as oito iniciativas e os vídeos de fundo. Inclui controles de navegação e pausa, busca sem distinção de acentos, foco protegido nos diálogos e respeito à preferência de movimento reduzido. A troca automática usa oito segundos para dar tempo de leitura e pausa durante a interação.
+A página apresenta nove iniciativas e seus vídeos de fundo. Inclui controles de navegação e pausa, busca sem distinção de acentos, foco protegido nos diálogos e respeito à preferência de movimento reduzido. A troca automática usa oito segundos para dar tempo de leitura e pausa durante a interação.
 
 Verificação realizada em Chromium: busca e recuperação sem resultados, navegação circular, associação do vídeo à iniciativa, pausa e retomada, detalhes e contatos, Escape e retorno do foco. Layout conferido em larguras de 320, 390, 820 e 1440 pixels. Safari e dispositivos físicos ainda não foram testados.

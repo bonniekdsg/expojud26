@@ -36,6 +36,18 @@ const slides = [
         cardImages: ["assets/images/data_social.webp"]
     },
     {
+        title: "Painel de Diagnóstico das Escolas",
+        officialTitle: "Painel de Diagnóstico das Condições de Funcionamento das Escolas das Redes Públicas Estadual e Municipal do Acre",
+        category: "Educação",
+        description: "Reúne dados sobre as condições de funcionamento das escolas públicas do Acre para orientar a defesa do direito à educação.",
+        details: [
+            "Desenvolvido pelo Núcleo de Apoio Técnico (NAT), o painel reúne informações sobre infraestrutura e conservação predial, alimentação e transporte escolar, acessibilidade e educação especial, recursos humanos e gestão escolar, condições sanitárias e ambientais, segurança e funcionamento institucional.",
+            "A ferramenta permite construir um diagnóstico amplo da realidade escolar, identificar problemas e subsidiar a atuação do Ministério Público na defesa do direito à educação."
+        ],
+        background: { type: "video", src: "assets/videos/painel_diagnostico_escolas.mp4" },
+        cardImages: ["assets/images/painel_diagnostico_escolas.webp"]
+    },
+    {
         title: "Painel de Plantões",
         officialTitle: "Painel de Plantões dos Membros do Primeiro e Segundo Graus",
         category: "Atividade Correcional",
