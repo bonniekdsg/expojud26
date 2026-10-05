@@ -49,7 +49,9 @@ input { caret-color: #fff; }
 .main-content { max-width: 610px; }
 .content-slide { animation: content-enter 650ms var(--ease) both; }
 .slide-title { font-size: clamp(2.5rem, 4.2vw, 4.5rem); line-height: 1.07; font-weight: 500; letter-spacing: -.035em; text-wrap: balance; margin: 0 0 22px; }
-.slide-category { display: inline-flex; color: #e7cbcf; font-size: 12px; font-weight: 500; margin-bottom: 18px; }
+.slide-responsibility { display: grid; gap: 4px; margin: 0 0 16px; color: #e7cbcf; font-size: 12px; line-height: 1.5; }
+.slide-responsibility p { margin: 0; }
+.slide-responsibility-label { color: #e7cbcf; font-weight: 600; }
 .slide-description { font-size: clamp(.9375rem, 1.12vw, 1.0625rem); line-height: 1.75; color: #e0e2e3; max-width: 46ch; margin: 0 0 30px; }
 .btn-dynamic { display: inline-flex; align-items: center; justify-content: center; gap: 22px; min-height: 52px; border-radius: 100px; padding: 0 25px; font-size: 14px; font-weight: 500; color: #fff; transition: background-color 200ms ease, transform 200ms ease; }
 .btn-dynamic svg { width: 18px; height: 18px; }
@@ -89,6 +91,9 @@ input { caret-color: #fff; }
 .modal-content p, .modal-content li { line-height: 1.75; }
 .modal-content .text-red-400 { color: #f0b8be; }
 #modal-description { color: #e2e5e6; }
+.modal-responsibility { display: grid; gap: 6px; margin: 0 0 22px; padding: 14px 16px; border: 1px solid rgba(255, 255, 255, .12); border-radius: 14px; background: rgba(255, 255, 255, .045); color: #e7cbcf; font-size: 13px; line-height: 1.6; }
+.modal-responsibility-line { margin: 0; }
+.modal-responsibility-line strong { color: #e7cbcf; font-weight: 600; }
 #modal-more { color: #d5dadd; }
 #mobile-menu-content { max-width: 460px; }
 .modal-overlay > button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; background: rgba(255,255,255,.13); font-family: sans-serif; line-height: 1; }
@@ -131,7 +136,6 @@ input { caret-color: #fff; }
     .site-header .space-x-2 > * { margin-left: 0; }
     .showcase { padding: 22px 20px 18px; gap: 26px; }
     .slide-title { font-size: clamp(2rem, 8.5vw, 2.65rem); margin-bottom: 14px; }
-    .slide-category { margin-bottom: 12px; font-size: 11px; }
     .slide-description { font-size: 14px; margin-bottom: 20px; }
     .btn-dynamic { min-height: 48px; font-size: 13px; }
     .carousel-heading { padding: 0 6px; }

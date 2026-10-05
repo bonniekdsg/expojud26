@@ -139,9 +139,19 @@ function updateSlide() {
     const title = document.createElement('h1');
     title.className = 'slide-title font-serif';
     title.textContent = slide.title;
-    const category = document.createElement('p');
-    category.className = 'slide-category';
-    category.textContent = slide.category;
+    const responsibility = document.createElement('div');
+    responsibility.className = 'slide-responsibility';
+    responsibility.setAttribute('aria-label', 'Órgãos responsáveis pela iniciativa');
+    (slide.responsible || []).forEach(({ label, name }) => {
+        const line = document.createElement('p');
+        const role = document.createElement('span');
+        role.className = 'slide-responsibility-label';
+        role.textContent = `${label}: `;
+        const owner = document.createElement('span');
+        owner.textContent = name;
+        line.append(role, owner);
+        responsibility.append(line);
+    });
     const description = document.createElement('p');
     description.className = 'slide-description';
     description.textContent = slide.description;
@@ -151,7 +161,7 @@ function updateSlide() {
     explore.setAttribute('aria-haspopup', 'dialog');
     explore.innerHTML = `<span>Conhecer iniciativa</span>${arrowIcon}`;
     explore.addEventListener('click', () => openModal(slide));
-    content.append(title, category, description, explore);
+    content.append(title, responsibility, description, explore);
     $('content-container').replaceChildren(content);
     if (restoreExploreFocus) explore.focus();
     const cards = [...$('image-carousel').children];
@@ -180,9 +190,17 @@ function goToSlide(index) {
 }
 
 function openModal(slide) {
-    $('modal-category').textContent = slide.category;
     $('modal-title').textContent = slide.officialTitle || slide.title;
     $('modal-description').textContent = slide.description;
+    $('modal-responsibility').replaceChildren();
+    (slide.responsible || []).forEach(({ label, name }) => {
+        const line = document.createElement('p');
+        line.className = 'modal-responsibility-line';
+        const role = document.createElement('strong');
+        role.textContent = `${label}: `;
+        line.append(role, document.createTextNode(name));
+        $('modal-responsibility').append(line);
+    });
     $('modal-more').replaceChildren();
     (slide.details || [slide.description]).forEach((detail) => {
         const paragraph = document.createElement('p');
@@ -241,7 +259,10 @@ function performSearch(query) {
     const normalized = normalizeSearch(query);
     $('search-input').value = query;
     $('mobile-search-input').value = query;
-    displayedSlides = originalSlides.filter((slide) => normalizeSearch(`${slide.title} ${slide.officialTitle || ''} ${slide.category}`).includes(normalized));
+    displayedSlides = originalSlides.filter((slide) => {
+        const owners = (slide.responsible || []).map(({ label, name }) => `${label} ${name}`).join(' ');
+        return normalizeSearch(`${slide.title} ${slide.officialTitle || ''} ${slide.category} ${owners}`).includes(normalized);
+    });
     currentSlide = 0;
     renderNavigation();
     $('search-status').textContent = `${displayedSlides.length} ${displayedSlides.length === 1 ? 'iniciativa encontrada' : 'iniciativas encontradas'}.`;

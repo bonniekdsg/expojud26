@@ -3,6 +3,7 @@ const slides = [
         title: "Modelo Correcional Orientado por Dados",
         officialTitle: "Modelo Correcional Orientado por Dados",
         category: "Atividade Correcional",
+        responsible: [{ label: "Órgão responsável", name: "Corregedoria-Geral" }],
         description: "Integra dados, indicadores e painéis analíticos ao acompanhamento das unidades e ao planejamento das correições.",
         details: [
             "Incorpora dados, indicadores e painéis analíticos à atividade da Corregedoria-Geral para acompanhar a atuação das unidades e subsidiar decisões correcionais. As informações dos sistemas institucionais são organizadas e analisadas para identificar tendências, pontos de atenção e possíveis riscos.",
@@ -15,6 +16,7 @@ const slides = [
         title: "Acompanhamento de Membros Ingressantes",
         officialTitle: "Programa de Acompanhamento dos Membros Ingressantes",
         category: "Atividade Correcional",
+        responsible: [{ label: "Órgão responsável", name: "Corregedoria-Geral" }],
         description: "Acompanha membros em início de carreira com diálogo, orientação e apoio durante a adaptação às rotinas funcionais.",
         details: [
             "Estratégia de acompanhamento individualizado e contínuo dos membros em início de carreira, especialmente durante o período de adaptação e consolidação das rotinas funcionais. Cada ingressante conta com um corregedor de referência, que mantém um canal direto de diálogo para esclarecer dúvidas, oferecer orientações e identificar dificuldades.",
@@ -27,6 +29,7 @@ const slides = [
         title: "DataSocial",
         officialTitle: "DataSocial — Estratégia de Dados para Políticas Públicas",
         category: "Políticas Públicas",
+        responsible: [{ label: "Órgão responsável", name: "Corregedoria-Geral" }],
         description: "Territorializa indicadores sociais para revelar desigualdades, lacunas de atendimento e prioridades das políticas públicas no Acre.",
         details: [
             "Iniciativa que reúne, organiza e territorializa dados de diferentes fontes para ampliar o conhecimento sobre a realidade social e a execução de políticas públicas no Acre. A partir de temas prioritários, são selecionados indicadores sobre demandas, cobertura de serviços, vulnerabilidades e resultados das políticas, posteriormente apresentados em painéis de monitoramento.",
@@ -39,6 +42,10 @@ const slides = [
         title: "Painel de Diagnóstico das Escolas",
         officialTitle: "Painel de Diagnóstico das Condições de Funcionamento das Escolas das Redes Públicas Estadual e Municipal do Acre",
         category: "Educação",
+        responsible: [
+            { label: "Desenvolvimento", name: "Núcleo de Apoio Técnico (NAT)" },
+            { label: "Gestão", name: "Procuradoria-Geral Adjunta da Criança, do Adolescente e da Educação" }
+        ],
         description: "Reúne dados sobre as condições de funcionamento das escolas públicas do Acre para orientar a defesa do direito à educação.",
         details: [
             "Desenvolvido pelo Núcleo de Apoio Técnico (NAT), o painel reúne informações sobre infraestrutura e conservação predial, alimentação e transporte escolar, acessibilidade e educação especial, recursos humanos e gestão escolar, condições sanitárias e ambientais, segurança e funcionamento institucional.",
@@ -51,6 +58,7 @@ const slides = [
         title: "Painel de Plantões",
         officialTitle: "Painel de Plantões dos Membros do Primeiro e Segundo Graus",
         category: "Atividade Correcional",
+        responsible: [{ label: "Órgão responsável", name: "Corregedoria-Geral" }],
         description: "Organiza escalas de plantão dos membros e acompanha saldos de folgas compensatórias em um único ambiente.",
         details: [
             "Solução digital que reúne, em um único ambiente, a gestão das escalas de plantão dos membros do primeiro e do segundo graus. A ferramenta permite registrar, organizar, consultar e acompanhar as escalas e os respectivos períodos, além de calcular e acompanhar os saldos de folgas compensatórias.",
@@ -63,6 +71,7 @@ const slides = [
         title: "Radar Web de Políticas Públicas",
         officialTitle: "Radar Web de Políticas Públicas — Monitoramento de Fontes Digitais",
         category: "Políticas Públicas",
+        responsible: [{ label: "Órgão responsável", name: "Corregedoria-Geral" }],
         description: "Monitora fontes digitais abertas para identificar demandas emergentes, reclamações recorrentes e riscos em serviços públicos.",
         details: [
             "Ferramenta de monitoramento de fontes digitais abertas, como redes sociais e outros ambientes públicos da internet, voltada à identificação de demandas sociais emergentes, reclamações recorrentes, riscos e indícios de falhas em serviços públicos.",
@@ -75,6 +84,7 @@ const slides = [
         title: "Estratégia MPAC Dimensiona",
         officialTitle: "Estratégia MPAC Dimensiona",
         category: "Gestão de Pessoas",
+        responsible: [{ label: "Órgão responsável", name: "Corregedoria-Geral" }],
         description: "Dimensiona e distribui a força de trabalho conforme as necessidades, demandas e capacidades das unidades do MPAC.",
         details: [
             "Iniciativa voltada ao dimensionamento e à distribuição da força de trabalho com base nas necessidades das diferentes unidades do MPAC. A metodologia relaciona informações sobre pessoal disponível com indicadores de demanda, volume e complexidade das atividades e capacidade operacional.",
@@ -87,6 +97,7 @@ const slides = [
         title: "Ouvidoria Cidadã",
         officialTitle: "Ouvidoria Cidadã",
         category: "Acesso Digital",
+        responsible: [{ label: "Órgão responsável", name: "Ouvidora-Geral" }],
         description: "Aplicativo que facilita o envio de manifestações e aproxima a população dos serviços da Ouvidoria do MPAC.",
         details: [
             "Aplicativo criado para facilitar o acesso da população aos serviços da Ouvidoria do MPAC. A ferramenta simplifica o envio de manifestações e abre novos caminhos para a participação, o diálogo e a aproximação entre o Ministério Público e a sociedade."
@@ -98,6 +109,7 @@ const slides = [
         title: "VerificaAí",
         officialTitle: "VerificaAí",
         category: "Acesso Digital",
+        responsible: [{ label: "Órgão responsável", name: "Subprocuradoria-Geral de Inovação" }],
         description: "Combina inteligência artificial e análise humana para verificar conteúdos eleitorais e enfrentar a desinformação.",
         details: [
             "Ferramenta de verificação de conteúdos relacionados às eleições no Acre e à eleição presidencial. Criada pela Subprocuradoria-Geral de Inovação, combina inteligência artificial e análise humana para checar informações, contribuindo para o enfrentamento à desinformação e para o exercício do direito à informação.",
