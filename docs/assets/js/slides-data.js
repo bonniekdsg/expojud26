@@ -13,13 +13,13 @@ const slides = [
         cardImages: ["assets/images/modelo_correcional.webp"]
     },
     {
-        title: "Acompanhamento de Membros Ingressantes",
-        officialTitle: "Programa de Acompanhamento dos Membros Ingressantes",
+        title: "Acompanhamento de Membros e Membras Ingressantes",
+        officialTitle: "Programa de Acompanhamento de Membros e Membras Ingressantes",
         category: "Atividade Correcional",
         responsible: [{ label: "Órgão responsável", name: "Corregedoria-Geral" }],
-        description: "Acompanha membros em início de carreira com diálogo, orientação e apoio durante a adaptação às rotinas funcionais.",
+        description: "Acompanha membros e membras em início de carreira com diálogo, orientação e apoio durante a adaptação às rotinas funcionais.",
         details: [
-            "Estratégia de acompanhamento individualizado e contínuo dos membros em início de carreira, especialmente durante o período de adaptação e consolidação das rotinas funcionais. Cada ingressante conta com um corregedor de referência, que mantém um canal direto de diálogo para esclarecer dúvidas, oferecer orientações e identificar dificuldades.",
+            "Estratégia de acompanhamento individualizado e contínuo de membros e membras em início de carreira, especialmente durante o período de adaptação e consolidação das rotinas funcionais. Cada pessoa ingressante conta com uma referência na Corregedoria, que mantém um canal direto de diálogo para esclarecer dúvidas, oferecer orientações e identificar dificuldades.",
             "O acompanhamento ocorre por meio de contatos periódicos, reuniões, escuta individualizada e análise de informações funcionais, permitindo que necessidades de orientação ou apoio sejam percebidas desde o início."
         ],
         background: { type: "video", src: "assets/videos/programa_de_acompanhamento.mp4" },
@@ -56,12 +56,12 @@ const slides = [
     },
     {
         title: "Painel de Plantões",
-        officialTitle: "Painel de Plantões dos Membros do Primeiro e Segundo Graus",
+        officialTitle: "Painel de Plantões dos Membros e das Membras do Primeiro e do Segundo Graus",
         category: "Atividade Correcional",
         responsible: [{ label: "Órgão responsável", name: "Corregedoria-Geral" }],
-        description: "Organiza escalas de plantão dos membros e acompanha saldos de folgas compensatórias em um único ambiente.",
+        description: "Organiza escalas de plantão de membros e membras e acompanha saldos de folgas compensatórias em um único ambiente.",
         details: [
-            "Solução digital que reúne, em um único ambiente, a gestão das escalas de plantão dos membros do primeiro e do segundo graus. A ferramenta permite registrar, organizar, consultar e acompanhar as escalas e os respectivos períodos, além de calcular e acompanhar os saldos de folgas compensatórias.",
+            "Solução digital que reúne, em um único ambiente, a gestão das escalas de plantão de membros e membras do primeiro e do segundo graus. A ferramenta permite registrar, organizar, consultar e acompanhar as escalas e os respectivos períodos, além de calcular e acompanhar os saldos de folgas compensatórias.",
             "Também possibilita a emissão automatizada de certidões, reduzindo controles paralelos e procedimentos manuais relacionados à gestão dos plantões."
         ],
         background: { type: "video", src: "assets/videos/painel_de_plantoes.mp4" },
